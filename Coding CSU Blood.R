@@ -165,30 +165,23 @@ ggplot(topTableResults, aes(x = logFC, y = -log10(adj.P.Val), color = status)) +
 
 # PART J.2 VISUALISASI HEATMAP
 
-# 1. Pastikan topTableResults sudah diurutkan berdasarkan p-value
 topTableResults <- topTableResults[order(topTableResults$adj.P.Val), ]
 
-# 2. Filter agar tidak ada multiple probe pada satu gen (Hanya ambil 1 gen unik terbaik)
 topTable_Unique <- topTableResults %>%
   # Hapus baris yang tidak memiliki Symbol Gen (opsional, agar heatmap bersih)
   filter(!is.na(SYMBOL) & SYMBOL != "") %>% 
   # Pilih baris pertama untuk setiap Symbol (karena sudah diurutkan, ini adalah p-value terkecil)
   distinct(SYMBOL, .keep_all = TRUE)
 
-# 3. Ambil 50 gen teratas yang sudah unik
 top50 <- head(topTable_Unique, 50)
 
-# 4. Ambil data ekspresi berdasarkan PROBEID dari top50 yang sudah unik
 mat_heatmap <- ex[top50$PROBEID, ]
 
-# 5. Penamaan baris menggunakan Symbol Gen (pasti unik sekarang)
 rownames(mat_heatmap) <- top50$SYMBOL
 
-# 6. Pembersihan data wajib
 mat_heatmap <- mat_heatmap[complete.cases(mat_heatmap), ]
 mat_heatmap <- mat_heatmap[apply(mat_heatmap, 1, var) > 0, ]
 
-# 7. Gambar Heatmap
 pheatmap(
   mat_heatmap,
   scale = "row",
