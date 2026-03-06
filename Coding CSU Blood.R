@@ -1,4 +1,4 @@
-#Modul: Analisis Ekspresi Gen Pasien Chronic Spontaneous Urticaria (CSU)
+#Modul: Analisis Ekspresi Gen Pasien Chronic Spontaneous Urticaria (CSU) Melalui Sampel Darah
 #Dataset: GSE72541 (CSU vs Healthy Control)
 #Platform: Agilent SurePrint G3 Human GE v2 - GPL16699
 #Tujuan: Mengidentifikasi Differentially Expressed Genes (DEG)
