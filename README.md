@@ -98,3 +98,14 @@ These findings suggest that **interactions between the coagulation system and th
 - pheatmap
 - dplyr
 - umap
+
+---
+
+## Author
+
+**Naeela Mareta Ayudhia**
+
+---
+
+## Acknowledgements
+This project uses publicly available data from the **NCBI Gene Expression Omnibus (GEO)** and acknowledges the original dataset contributors.
